@@ -1,0 +1,15 @@
+torch
+torchvision
+torchaudio
+numpy
+pillow
+huggingface_hub
+transformers
+decord
+bitsandbytes
+accelerate
+qwen-vl-utils
+optimum
+av
+decord
+git+https://github.com/huggingface/transformers

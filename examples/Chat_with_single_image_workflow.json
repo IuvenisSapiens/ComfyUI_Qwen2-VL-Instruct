@@ -1,0 +1,247 @@
+{
+  "last_node_id": 58,
+  "last_link_id": 71,
+  "nodes": [
+    {
+      "id": 56,
+      "type": "Qwen2_VQA",
+      "pos": {
+        "0": -65,
+        "1": -118,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      },
+      "size": [
+        364.9614391770931,
+        303.4268630810259
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source_path",
+          "type": "PATH",
+          "link": 70
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            68
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Qwen2_VQA"
+      },
+      "widgets_values": [
+        "Describe the image in detail",
+        "Qwen2-VL-2B-Instruct",
+        "8bit",
+        false,
+        0.7,
+        2048,
+        200704,
+        1003520,
+        1886,
+        "randomize"
+      ]
+    },
+    {
+      "id": 58,
+      "type": "ImageLoader",
+      "pos": {
+        "0": -556,
+        "1": -119,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      },
+      "size": [
+        235.52594333541242,
+        306.72492187467003
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "PATH",
+          "type": "PATH",
+          "links": [
+            71
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageLoader"
+      },
+      "widgets_values": [
+        "ComfyUI_00532_.png",
+        "image"
+      ]
+    },
+    {
+      "id": 51,
+      "type": "DisplayText",
+      "pos": {
+        "0": -541,
+        "1": 253,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      },
+      "size": [
+        826.9450077528302,
+        212.7528930247032
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 68,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null,
+          "shape": 6
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DisplayText"
+      },
+      "widgets_values": [
+        "",
+        "The image depicts a stylized, pixelated representation of Earth and its moon, set against a cosmic background filled with stars and nebulae. The Earth is prominently featured in the center, occupying a significant portion of the frame. It appears to be in a state of partial eclipse, with the moon partially visible on the left side of the Earth. The moon's surface is dark, contrasting with the Earth's lighter, more detailed appearance.\n\nThe Earth's continents are depicted with varying shades of green, yellow, and brown, indicating different landmasses. The moon's surface is also shown in a similar color scheme, with darker areas representing the lunar craters and brighter areas showing the moon's lighter regions. The overall color palette of the image is a mix of greens, yellows, browns, and purples, giving it a vibrant and somewhat surreal feel.\n\nThe background features a gradient of colors, transitioning from a deep purple at the top to a lighter blue at the bottom, with occasional patches of green and yellow. This gradient creates a sense of depth and space, enhancing the cosmic atmosphere of the image.\n\nThe overall composition suggests a futuristic or sci-fi theme, possibly inspired by space exploration or a fantasy universe. The pixelated style adds a retro, vintage feel to the image, reminiscent of early video games or digital art from the 8-bit era."
+      ]
+    },
+    {
+      "id": 57,
+      "type": "MultiplePathsInput",
+      "pos": {
+        "0": -295,
+        "1": -117,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      },
+      "size": {
+        "0": 210,
+        "1": 82
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "path_1",
+          "type": "PATH",
+          "link": 71
+        }
+      ],
+      "outputs": [
+        {
+          "name": "paths",
+          "type": "PATH",
+          "links": [
+            70
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        1,
+        null
+      ]
+    }
+  ],
+  "links": [
+    [
+      68,
+      56,
+      0,
+      51,
+      0,
+      "STRING"
+    ],
+    [
+      70,
+      57,
+      0,
+      56,
+      0,
+      "PATH"
+    ],
+    [
+      71,
+      58,
+      2,
+      57,
+      0,
+      "PATH"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.6588450000000003,
+      "offset": [
+        965.0241405660757,
+        284.85457883493444
+      ]
+    }
+  },
+  "version": 0.4
+}

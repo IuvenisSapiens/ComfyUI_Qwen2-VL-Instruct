@@ -1,0 +1,132 @@
+{
+  "last_node_id": 25,
+  "last_link_id": 24,
+  "nodes": [
+    {
+      "id": 25,
+      "type": "Qwen2_VQA",
+      "pos": {
+        "0": -1794,
+        "1": -1783,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      },
+      "size": {
+        "0": 400,
+        "1": 292
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source_path",
+          "type": "PATH",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            24
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Qwen2_VQA"
+      },
+      "widgets_values": [
+        "Quantum Group",
+        "Qwen2-VL-7B-Instruct",
+        "4bit",
+        true,
+        0.7,
+        2048,
+        200704,
+        1003520,
+        908,
+        "randomize"
+      ]
+    },
+    {
+      "id": 24,
+      "type": "DisplayText",
+      "pos": {
+        "0": -1377,
+        "1": -1782,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      },
+      "size": [
+        340.37530120020256,
+        290.90455496540926
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 24,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null,
+          "shape": 6
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DisplayText"
+      },
+      "widgets_values": [
+        "",
+        "Quantum groups are mathematical structures that were introduced in the late 20th century as a generalization of Lie groups and Hopf algebras. They are used in various areas of mathematics and theoretical physics, including knot theory, quantum field theory, and statistical mechanics.\n\nA quantum group is typically defined as a Hopf algebra over a field, equipped with a comultiplication and an antipode that satisfy certain conditions. The most well-known example of a quantum group is the quantum group associated to a Lie algebra, which is obtained by deforming the universal enveloping algebra of the Lie algebra using a parameter \\(q\\).\n\nQuantum groups have many interesting properties and applications. For example, they can be used to construct solutions to the Yang-Baxter equation, which is a key equation in the theory of integrable systems. They also play a role in the study of quantum field theories and the classification of topological phases of matter."
+      ]
+    }
+  ],
+  "links": [
+    [
+      24,
+      25,
+      0,
+      24,
+      0,
+      "STRING"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 1.0610764609500007,
+      "offset": [
+        1892.6881649674706,
+        1881.970974266596
+      ]
+    }
+  },
+  "version": 0.4
+}

@@ -1,0 +1,241 @@
+{
+  "last_node_id": 57,
+  "last_link_id": 70,
+  "nodes": [
+    {
+      "id": 55,
+      "type": "LoadVideo",
+      "pos": {
+        "0": -633,
+        "1": -119,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      },
+      "size": [
+        319.1347277183169,
+        297.3973388671875
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "PATH",
+          "type": "PATH",
+          "links": [
+            69
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadVideo"
+      },
+      "widgets_values": [
+        "AnimateDiff_00002.mp4",
+        "Video",
+        {
+          "hidden": false,
+          "paused": false,
+          "params": {}
+        }
+      ]
+    },
+    {
+      "id": 51,
+      "type": "DisplayText",
+      "pos": {
+        "0": -599,
+        "1": 237,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      },
+      "size": [
+        829.645458508284,
+        155.36328292072812
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 68,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null,
+          "shape": 6
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DisplayText"
+      },
+      "widgets_values": [
+        "",
+        "The video captures a stunning sunset scene set against a vibrant orange and red sky. The sun is positioned towards the left side of the frame, casting a warm glow over the landscape. The sky is filled with soft, wispy clouds that add to the beauty of the scene.\n\nIn the foreground, there is a solitary tree standing tall, its branches reaching out into the sky. The tree's silhouette contrasts sharply with the bright colors of the sunset, making it a focal point in the composition. The tree appears to be in full bloom, with its leaves casting shadows on the ground below.\n\nThe horizon line is visible, separating the sky from the earth below. The colors of the sky and the tree create a sense of depth and dimension in the image. The overall atmosphere is serene and peaceful, evoking a sense of calm and tranquility."
+      ]
+    },
+    {
+      "id": 56,
+      "type": "Qwen2_VQA",
+      "pos": {
+        "0": -65,
+        "1": -118,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      },
+      "size": [
+        322.1059348394531,
+        293.7331819631254
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source_path",
+          "type": "PATH",
+          "link": 70
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            68
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Qwen2_VQA"
+      },
+      "widgets_values": [
+        "Describe the video in detail",
+        "Qwen2-VL-2B-Instruct",
+        "none",
+        false,
+        0.7,
+        2048,
+        200704,
+        1003520,
+        606,
+        "randomize"
+      ]
+    },
+    {
+      "id": 57,
+      "type": "MultiplePathsInput",
+      "pos": {
+        "0": -296,
+        "1": -120,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      },
+      "size": {
+        "0": 210,
+        "1": 82
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "path_1",
+          "type": "PATH",
+          "link": 69
+        }
+      ],
+      "outputs": [
+        {
+          "name": "paths",
+          "type": "PATH",
+          "links": [
+            70
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        1,
+        null
+      ]
+    }
+  ],
+  "links": [
+    [
+      68,
+      56,
+      0,
+      51,
+      0,
+      "STRING"
+    ],
+    [
+      69,
+      55,
+      0,
+      57,
+      0,
+      "PATH"
+    ],
+    [
+      70,
+      57,
+      0,
+      56,
+      0,
+      "PATH"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.7247295000000006,
+      "offset": [
+        1066.440116117236,
+        219.05175961761017
+      ]
+    }
+  },
+  "version": 0.4
+}

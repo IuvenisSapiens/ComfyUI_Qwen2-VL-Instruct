@@ -1,0 +1,314 @@
+{
+  "last_node_id": 63,
+  "last_link_id": 80,
+  "nodes": [
+    {
+      "id": 63,
+      "type": "Qwen2_VQA",
+      "pos": {
+        "0": -568,
+        "1": -136,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      },
+      "size": {
+        "0": 400,
+        "1": 292
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source_path",
+          "type": "PATH",
+          "link": 78
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            79
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Qwen2_VQA"
+      },
+      "widgets_values": [
+        "Identify the similarities between these images.",
+        "Qwen2-VL-2B-Instruct",
+        "none",
+        false,
+        0.7,
+        2048,
+        813008,
+        1129744,
+        577,
+        "randomize"
+      ]
+    },
+    {
+      "id": 60,
+      "type": "ImageLoader",
+      "pos": {
+        "0": -825,
+        "1": -207,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      },
+      "size": {
+        "0": 243.465576171875,
+        "1": 361.4241027832031
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "PATH",
+          "type": "PATH",
+          "links": [
+            80
+          ],
+          "shape": 3,
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageLoader"
+      },
+      "widgets_values": [
+        "ComfyUI_00508_.png",
+        "image"
+      ]
+    },
+    {
+      "id": 58,
+      "type": "ImageLoader",
+      "pos": {
+        "0": -1075,
+        "1": -318,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      },
+      "size": {
+        "0": 238.26918029785156,
+        "1": 360.3518981933594
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "PATH",
+          "type": "PATH",
+          "links": [
+            72
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageLoader"
+      },
+      "widgets_values": [
+        "ComfyUI_00509_.png",
+        "image"
+      ]
+    },
+    {
+      "id": 57,
+      "type": "MultiplePathsInput",
+      "pos": {
+        "0": -532,
+        "1": -281,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      },
+      "size": {
+        "0": 210,
+        "1": 102
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "path_1",
+          "type": "PATH",
+          "link": 72
+        },
+        {
+          "name": "path_2",
+          "type": "PATH",
+          "link": 80
+        }
+      ],
+      "outputs": [
+        {
+          "name": "paths",
+          "type": "PATH",
+          "links": [
+            78
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        2,
+        null
+      ]
+    },
+    {
+      "id": 51,
+      "type": "DisplayText",
+      "pos": {
+        "0": -1048,
+        "1": 202,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      },
+      "size": [
+        845.0120771953798,
+        155.67845770298834
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 79,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null,
+          "shape": 6
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DisplayText"
+      },
+      "widgets_values": [
+        "",
+        "The image you provided is a digital rendering of Earth, showcasing its surface and atmosphere from space. Here are some similarities between this image and others:\n\n1. **Earth's Shape and Orientation**: Both images depict Earth as a sphere with a tilted axis, which is a characteristic feature of our planet.\n2. **Surface Features**: Both images show the continents, oceans, and other features of Earth's surface, including mountains, valleys, and bodies of water.\n3. **Atmospheric Conditions**: Both images depict Earth's atmosphere, with clouds and other atmospheric phenomena visible.\n4. **Lighting and Shadows**: Both images use lighting to create a realistic appearance, with shadows and highlights that give the impression of depth and realism.\n\nThese similarities suggest that both images are likely created using advanced computer graphics techniques to capture the essence of Earth's appearance from space."
+      ]
+    }
+  ],
+  "links": [
+    [
+      72,
+      58,
+      2,
+      57,
+      0,
+      "PATH"
+    ],
+    [
+      78,
+      57,
+      0,
+      63,
+      0,
+      "PATH"
+    ],
+    [
+      79,
+      63,
+      0,
+      51,
+      0,
+      "STRING"
+    ],
+    [
+      80,
+      60,
+      2,
+      57,
+      1,
+      "PATH"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.6588450000000026,
+      "offset": [
+        1502.5789723246937,
+        402.74446079534624
+      ]
+    }
+  },
+  "version": 0.4
+}
