@@ -4,12 +4,11 @@ torchaudio
 numpy
 pillow
 huggingface_hub
-transformers
 decord
-bitsandbytes
 accelerate
 qwen-vl-utils
 optimum
 av
 decord
+auto-gptq 
 git+https://github.com/huggingface/transformers

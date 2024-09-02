@@ -29,7 +29,11 @@ class Qwen2_VQA:
                 "text": ("STRING", {"default": "", "multiline": True}),
                 "model": (
                     [
+                        "Qwen2-VL-2B-Instruct-GPTQ-Int4",
+                        "Qwen2-VL-2B-Instruct-GPTQ-Int8",
                         "Qwen2-VL-2B-Instruct",
+                        "Qwen2-VL-7B-Instruct-GPTQ-Int4",
+                        "Qwen2-VL-7B-Instruct-GPTQ-Int8",
                         "Qwen2-VL-7B-Instruct",
                     ],
                     {"default": "Qwen2-VL-2B-Instruct"},
