@@ -192,4 +192,4 @@ class Qwen2_VQA:
                 torch.cuda.empty_cache()  # release GPU memory
                 torch.cuda.ipc_collect()
 
-            return (result,)
+            return result
