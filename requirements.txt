@@ -6,7 +6,7 @@ pillow
 huggingface_hub
 decord
 accelerate
-qwen-vl-utils
+qwen-vl-utils[decord]
 optimum
 av
 decord
