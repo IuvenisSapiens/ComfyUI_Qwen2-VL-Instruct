@@ -11,4 +11,4 @@ optimum
 av
 decord
 auto-gptq 
-git+https://github.com/huggingface/transformers
+transformers>=4.45.0
