@@ -39,3 +39,18 @@ pip install -r requirements.txt
 ## Download Models
 
 All the models will be downloaded automatically when running the workflow if they are not found in the `ComfyUI\models\prompt_generator\` directory.
+
+## External Models
+
+You can easily add other Qwen3 Models hosted on huggingface by simply adding them to the ``external_models.json`` file with the following syntax:
+````
+Add models customized for your needs in the following format
+"model-name-in-dropdown": {
+  "repo_id": "user/repository-name",
+  "ignore_patterns": ["folders/files-to-ignore", "other-folder/*"], 
+}
+```` 
+- The ``model-name-in-dropdown`` value will be what's shown as the selection titel of the model inside the node's ``model`` value.
+- The ``repo_id`` is the combination of the username/modelname from the huggingface repository
+- The ``ignore_patterns`` value gives you the option to ignore specific files or folders like the gguf folder in some repos that are neither required nor usable by this node. This saves you time & space downloading unnecessary files. <br>
+You can, for example, use ``"ignore_patterns": ["gguf/**"]`` to ignore the gguf and all subfolders+subfiles in the repository.

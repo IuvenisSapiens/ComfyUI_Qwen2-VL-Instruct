@@ -12,12 +12,6 @@ from qwen_vl_utils import process_vision_info
 from pathlib import Path
 import json
 
-# Add models customized for your needs in the following format
-# "model-name-in-dropdown": {
-#   "repo_id": "user/repository-name",
-#   "ignore_patterns": ["folders/files-to-ignore", "other-folder/*"], 
-# }
-
 NODE_DIR = Path(__file__).resolve().parent
 EXTERNAL_MODELS_PATH = NODE_DIR / "external_models.json"
 
