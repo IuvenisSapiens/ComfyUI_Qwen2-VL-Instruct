@@ -1,0 +1,10 @@
+{
+  "Qwen3-VL-4B-Instruct-Abliterated": {
+    "repo_id": "huihui-ai/Huihui-Qwen3-VL-4B-Instruct-abliterated",
+    "ignore_patterns": ["gguf/**"]
+  },
+  "Qwen3-VL-8B-Instruct-Abliterated": {
+    "repo_id": "huihui-ai/Huihui-Qwen3-VL-8B-Instruct-abliterated",
+    "ignore_patterns": ["gguf/**"]
+  }
+}

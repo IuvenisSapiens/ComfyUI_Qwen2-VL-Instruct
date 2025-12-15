@@ -10,7 +10,87 @@ from transformers import (
 import comfy.model_management
 from qwen_vl_utils import process_vision_info
 from pathlib import Path
+import json
 
+NODE_DIR = Path(__file__).resolve().parent
+EXTERNAL_MODELS_PATH = NODE_DIR / "external_models.json"
+
+def _load_external_models() -> dict:
+    if not EXTERNAL_MODELS_PATH.exists():
+        return {}
+    try:
+        data = json.loads(EXTERNAL_MODELS_PATH.read_text(encoding="utf-8"))
+        return data if isinstance(data, dict) else {}
+    except Exception as e:
+        print(f"[ComfyUI_Qwen3-VL-Instruct] Could not read external_models.json: {e}")
+        return {}
+    
+EXTERNAL_MODELS = _load_external_models()
+
+def _model_choices():
+    built_in = [
+        "Qwen3-VL-4B-Instruct-FP8",
+        "Qwen3-VL-4B-Thinking-FP8",
+        "Qwen3-VL-8B-Instruct-FP8",
+        "Qwen3-VL-8B-Thinking-FP8",
+        "Qwen3-VL-4B-Instruct",
+        "Qwen3-VL-4B-Thinking",
+        "Qwen3-VL-8B-Instruct",
+        "Qwen3-VL-8B-Thinking",
+    ]
+    for k in EXTERNAL_MODELS.keys():
+        if k not in built_in:
+            built_in.append(k)
+    return built_in
+
+DEFAULT_HF_ORG = "Qwen"
+
+def _repo_id_from_selection(selection: str) -> str:
+    if "/" in selection:
+        return selection
+    spec = EXTERNAL_MODELS.get(selection)
+    if isinstance(spec, dict):
+        repo_id = spec.get("repo_id")
+        if isinstance(repo_id, str) and repo_id.strip():
+            return repo_id.strip()
+    return f"{DEFAULT_HF_ORG}/{selection}"
+
+def _ignore_patterns_for_selection(selection: str) -> list[str] | None:
+    spec = EXTERNAL_MODELS.get(selection)
+    if isinstance(spec, dict):
+        pats = spec.get("ignore_patterns")
+        if isinstance(pats, list) and pats:
+            return pats
+    return None
+
+def _local_folder_name(repo_id: str) -> str:
+    return repo_id.replace("/", "__")
+
+def _is_model_dir_complete(path: str) -> bool:
+    if not os.path.isdir(path):
+        return False
+
+    if not os.path.isfile(os.path.join(path, "config.json")):
+        return False
+
+    st_index = os.path.join(path, "model.safetensors.index.json")
+    if os.path.isfile(st_index):
+        try:
+            with open(st_index, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            shard_files = set(data.get("weight_map", {}).values())
+            if not shard_files:
+                return False
+            return all(os.path.isfile(os.path.join(path, sf)) for sf in shard_files)
+        except Exception:
+            return False
+
+    if os.path.isfile(os.path.join(path, "model.safetensors")):
+        return True
+    if os.path.isfile(os.path.join(path, "pytorch_model.bin")):
+        return True
+
+    return False
 
 class Qwen3_VQA:
     def __init__(self):
@@ -30,19 +110,7 @@ class Qwen3_VQA:
         return {
             "required": {
                 "text": ("STRING", {"default": "", "multiline": True}),
-                "model": (
-                    [
-                        "Qwen3-VL-4B-Instruct-FP8",
-                        "Qwen3-VL-4B-Thinking-FP8",
-                        "Qwen3-VL-8B-Instruct-FP8",
-                        "Qwen3-VL-8B-Thinking-FP8",
-                        "Qwen3-VL-4B-Instruct",
-                        "Qwen3-VL-4B-Thinking",
-                        "Qwen3-VL-8B-Instruct",
-                        "Qwen3-VL-8B-Thinking",
-                    ],
-                    {"default": "Qwen3-VL-4B-Instruct-FP8"},
-                ),
+                "model": (_model_choices(), {"default": "Qwen3-VL-4B-Instruct-FP8"}),
                 "quantization": (
                     ["none", "4bit", "8bit"],
                     {"default": "none"},
@@ -107,18 +175,21 @@ class Qwen3_VQA:
     ):
         if seed != -1:
             torch.manual_seed(seed)
-        model_id = f"qwen/{model}"
+        model_id = _repo_id_from_selection(model)
         self.model_checkpoint = os.path.join(
-            folder_paths.models_dir, "prompt_generator", os.path.basename(model_id)
+            folder_paths.models_dir, "prompt_generator", _local_folder_name(model_id)
         )
 
-        if not os.path.exists(self.model_checkpoint):
+        if not _is_model_dir_complete(self.model_checkpoint):
             from huggingface_hub import snapshot_download
+
+            ignore_patterns = _ignore_patterns_for_selection(model)
 
             snapshot_download(
                 repo_id=model_id,
                 local_dir=self.model_checkpoint,
                 local_dir_use_symlinks=False,
+                ignore_patterns=ignore_patterns,
             )
 
         # If model_id or quantization changed, reload processor and model
